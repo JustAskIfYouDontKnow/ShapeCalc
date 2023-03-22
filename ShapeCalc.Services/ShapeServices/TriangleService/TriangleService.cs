@@ -1,10 +1,10 @@
 ﻿using ShapeCalc.Database.Models;
 
-namespace ShapeCalc.Services.Services;
+namespace ShapeCalc.Services.ShapeServices.TriangleService;
 
 public class TriangleService : ITriangleService
 {
-    public async Task<double> GetArea(Triangle triangle)
+    public Task<double> GetArea(Triangle triangle)
     {
         var a = triangle.SideA;
         var b = triangle.SideB;
@@ -15,11 +15,19 @@ public class TriangleService : ITriangleService
     
         area = Double.IsNaN(area) ? 0 : area;
 
-        return area;
+        return Task.FromResult(area);
     }
 
 
-    public async Task<bool> IsRightAngle(Triangle triangle)
+    public Task<double> GetPerimeter(Triangle triangle)
+    {
+        var perimeter = triangle.SideA + triangle.SideB + triangle.SideC;
+
+        return Task.FromResult(perimeter);
+    }
+
+
+    public Task<bool> IsRightAngle(Triangle triangle)
     {
         const double tolerance = 0.0001;
 
@@ -31,6 +39,6 @@ public class TriangleService : ITriangleService
         var angleB = Math.Acos((a * a + c * c - b * b) / (2 * a * c)) * 180 / Math.PI;
         var angleC = Math.Acos((a * a + b * b - c * c) / (2 * a * b)) * 180 / Math.PI;
 
-        return Math.Abs(angleA - 90) < tolerance || Math.Abs(angleB - 90) < tolerance || Math.Abs(angleC - 90) < tolerance;
+        return Task.FromResult(Math.Abs(angleA - 90) < tolerance || Math.Abs(angleB - 90) < tolerance || Math.Abs(angleC - 90) < tolerance);
     }
 }
