@@ -1,20 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShapeCalc.Database.Models;
-using ShapeCalc.Services.Services;
+using ShapeCalc.Services;
+using ShapeCalc.Services.ShapeServices.TriangleService;
 
 namespace ShapeCalc.API.Controllers.Client;
 
 public class TriangleController : AbstractClientController
 {
-
-    private readonly ITriangleService _triangleService;
-
-
-    public TriangleController(ITriangleService triangleService)
-    {
-        _triangleService = triangleService;
-    }
-
 
     [HttpPost]
     public async Task<ActionResult<double>> GetTriangleArea([FromBody] Triangle triangle)
@@ -24,7 +16,8 @@ public class TriangleController : AbstractClientController
             return BadRequest(ModelState);
         }
 
-        var area =  await _triangleService.GetArea(triangle);
+        var shapeService = ShapeServiceFactory.Create();
+        var area = await shapeService.GetArea(triangle);
 
         if (area == 0)
         {
@@ -43,7 +36,8 @@ public class TriangleController : AbstractClientController
             return BadRequest(ModelState);
         }
 
-        var isRightAngle = await _triangleService.IsRightAngle(triangle);
+        var shapeService = ShapeServiceFactory.Create();
+        var isRightAngle = await shapeService.IsRightAngle(triangle);
 
         return Ok(isRightAngle);
     }

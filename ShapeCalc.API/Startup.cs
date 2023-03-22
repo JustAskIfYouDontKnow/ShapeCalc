@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
-using ShapeCalc.Services.Services;
+using ShapeCalc.Services.ShapeServices.CircleService;
+using ShapeCalc.Services.ShapeServices.TriangleService;
 
 namespace ShapeCalc.API;
 
