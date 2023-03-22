@@ -15,6 +15,7 @@ public class SquareController : AbstractClientController
         {
             return BadRequest(ModelState);
         }
+
         var shapeService = ShapeServiceFactory.Create();
         var area = await shapeService.GetArea(square);
 
@@ -25,8 +26,8 @@ public class SquareController : AbstractClientController
 
         return Ok(area);
     }
-    
-    
+
+
     [HttpPost]
     public async Task<ActionResult<double>> GetSquarePerimeter([FromBody] Square square)
     {
@@ -34,6 +35,7 @@ public class SquareController : AbstractClientController
         {
             return BadRequest(ModelState);
         }
+
         var shapeService = ShapeServiceFactory.Create();
         var perimeter = await shapeService.GetPerimeter(square);
 

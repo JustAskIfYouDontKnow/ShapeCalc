@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShapeCalc.Database.Models;
 using ShapeCalc.Services;
-using ShapeCalc.Services.ShapeServices.CircleService;
 
 namespace ShapeCalc.API.Controllers.Client
 {
     public class CircleController : AbstractClientController
     {
 
+        
         [HttpPost]
         public async Task<ActionResult<double>> GetCircleArea([FromBody] Circle circle)
         {
@@ -21,6 +21,7 @@ namespace ShapeCalc.API.Controllers.Client
 
             return Ok(area);
         }
+        
         
         [HttpPost]
         public async Task<ActionResult<double>> GetCirclePerimeter([FromBody] Circle circle)

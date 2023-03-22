@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShapeCalc.Database.Models;
 using ShapeCalc.Services;
-using ShapeCalc.Services.ShapeServices.TriangleService;
 
 namespace ShapeCalc.API.Controllers.Client;
 
 public class TriangleController : AbstractClientController
 {
+    
 
     [HttpPost]
     public async Task<ActionResult<double>> GetTriangleArea([FromBody] Triangle triangle)

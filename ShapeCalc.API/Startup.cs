@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 using ShapeCalc.Services.ShapeServices.CircleService;
+using ShapeCalc.Services.ShapeServices.SquareService;
 using ShapeCalc.Services.ShapeServices.TriangleService;
 
 namespace ShapeCalc.API;
@@ -21,6 +22,7 @@ public class Startup
 
         services.AddScoped<ITriangleService, TriangleService>();
         services.AddScoped<ICircleService, CircleService>();
+        services.AddScoped<ISquareService, SquareService>();
 
         services.AddControllers();
     }
