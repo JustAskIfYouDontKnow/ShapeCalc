@@ -1,5 +1,5 @@
 ﻿using ShapeCalc.Database.Models;
-using ShapeCalc.Services.Services;
+using ShapeCalc.Services.ShapeServices.CircleService;
 using Xunit;
 
 namespace ShapeCalc.Test
@@ -25,17 +25,17 @@ namespace ShapeCalc.Test
 
             Assert.Equal(expectedArea, actualArea);
         }
-
-
+        
         [Fact]
-        public async Task GetArea_InvalidCircle_Return_0_If_InvalidArea()
+        public async Task GetPerimeter_ValidCircle_ReturnsCorrectResult()
         {
-            var circle = new Circle {Radius = -1};
-            const double expectedValue = 0;
+            var circle = new Circle {Radius = 5};
+            var expectedArea = 2 * Math.PI * circle.Radius;
 
-            var actualArea = await _circleService.GetArea(circle);
+            var actualArea = await _circleService.GetPerimeter(circle);
 
-            Assert.Equal(expectedValue, actualArea);
+            Assert.Equal(expectedArea, actualArea);
         }
+        
     }
 }

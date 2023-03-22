@@ -1,5 +1,5 @@
 ﻿using ShapeCalc.Database.Models;
-using ShapeCalc.Services.Services;
+using ShapeCalc.Services.ShapeServices.TriangleService;
 using Xunit;
 
 namespace ShapeCalc.Test
@@ -32,6 +32,17 @@ namespace ShapeCalc.Test
             
             const int expectedValue = 0;
             Assert.Equal(expectedValue, actualArea);
+        }
+        
+        [Fact]
+        public async Task GetPerimeter_ValidTriangle_ReturnsCorrectResult()
+        {
+            var triangle = new Triangle {SideA = 3, SideB = 4, SideC = 5};
+            var expectedValue = triangle.SideA + triangle.SideB + triangle.SideC;
+
+            var actualValue = await _triangleService.GetPerimeter(triangle);
+
+            Assert.Equal(expectedValue, actualValue);
         }
 
 
