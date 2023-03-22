@@ -18,7 +18,9 @@ public class Startup
     {
         services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "ShapeCalc_Api", Version = "v1"}); });
 
-       
+        services.AddScoped<ITriangleService, TriangleService>();
+        services.AddScoped<ICircleService, CircleService>();
+
         services.AddControllers();
     }
 
