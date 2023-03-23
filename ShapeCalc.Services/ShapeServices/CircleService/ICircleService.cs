@@ -2,9 +2,4 @@
 
 namespace ShapeCalc.Services.ShapeServices.CircleService;
 
-public interface ICircleService
-{
-    Task<double> GetArea(Circle circle);
-    
-    Task<double> GetPerimeter(Circle circle);
-}
+public interface ICircleService : IShapeService<Circle> { }

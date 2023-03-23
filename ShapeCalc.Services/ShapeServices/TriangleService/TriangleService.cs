@@ -41,4 +41,10 @@ public class TriangleService : ITriangleService
 
         return Task.FromResult(Math.Abs(angleA - 90) < tolerance || Math.Abs(angleB - 90) < tolerance || Math.Abs(angleC - 90) < tolerance);
     }
+
+
+    public Task<bool> IsRightAngleTest(Triangle shape)
+    {
+        throw new NotImplementedException();
+    }
 }

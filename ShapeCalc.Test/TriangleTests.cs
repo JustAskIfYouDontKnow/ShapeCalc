@@ -13,6 +13,7 @@ namespace ShapeCalc.Test
             _triangleService = new TriangleService();
         }
 
+        
         [Fact]
         public async Task GetArea_ValidTriangle_ReturnsCorrectArea()
         {
@@ -24,6 +25,7 @@ namespace ShapeCalc.Test
             Assert.Equal(expectedArea, actualArea);
         }
         
+        
         [Fact]
         public async Task GetArea_InvalidTriangle_Return_0_If_InvalidArea()
         {
@@ -33,6 +35,7 @@ namespace ShapeCalc.Test
             const int expectedValue = 0;
             Assert.Equal(expectedValue, actualArea);
         }
+        
         
         [Fact]
         public async Task GetPerimeter_ValidTriangle_ReturnsCorrectResult()

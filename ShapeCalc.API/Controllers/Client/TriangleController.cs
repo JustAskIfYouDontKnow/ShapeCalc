@@ -7,6 +7,8 @@ namespace ShapeCalc.API.Controllers.Client;
 public class TriangleController : AbstractClientController
 {
     
+    public TriangleController(IServiceContainer serviceContainer) : base(serviceContainer) { }
+
 
     [HttpPost]
     public async Task<ActionResult<double>> GetTriangleArea([FromBody] Triangle triangle)
@@ -16,8 +18,7 @@ public class TriangleController : AbstractClientController
             return BadRequest(ModelState);
         }
 
-        var shapeService = ShapeServiceFactory.Create();
-        var area = await shapeService.GetArea(triangle);
+        var area = await ServiceContainer.TriangleService.GetArea(triangle);
 
         if (area == 0)
         {
@@ -36,10 +37,10 @@ public class TriangleController : AbstractClientController
             return BadRequest(ModelState);
         }
 
-        var shapeService = ShapeServiceFactory.Create();
-        var isRightAngle = await shapeService.IsRightAngle(triangle);
+        var isRightAngle = await ServiceContainer.TriangleService.IsRightAngle(triangle);
 
         return Ok(isRightAngle);
     }
+
 
 }

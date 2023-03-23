@@ -6,8 +6,9 @@ namespace ShapeCalc.API.Controllers.Client
 {
     public class CircleController : AbstractClientController
     {
+        public CircleController(IServiceContainer serviceContainer) : base(serviceContainer) { }
 
-        
+
         [HttpPost]
         public async Task<ActionResult<double>> GetCircleArea([FromBody] Circle circle)
         {
@@ -16,13 +17,12 @@ namespace ShapeCalc.API.Controllers.Client
                 return BadRequest(ModelState);
             }
 
-            var shapeService = ShapeServiceFactory.Create();
-            var area = await shapeService.GetArea(circle);
+            var area = await ServiceContainer.CircleService.GetArea(circle);
 
             return Ok(area);
         }
-        
-        
+
+
         [HttpPost]
         public async Task<ActionResult<double>> GetCirclePerimeter([FromBody] Circle circle)
         {
@@ -31,10 +31,11 @@ namespace ShapeCalc.API.Controllers.Client
                 return BadRequest(ModelState);
             }
 
-            var shapeService = ShapeServiceFactory.Create();
-            var perimeter = await shapeService.GetPerimeter(circle);
+            var perimeter = await ServiceContainer.CircleService.GetPerimeter(circle);
 
             return Ok(perimeter);
         }
+
+
     }
 }

@@ -7,8 +7,7 @@ namespace ShapeCalc.Test
     public class CircleServiceTests
     {
         private readonly ICircleService _circleService;
-
-
+        
         public CircleServiceTests()
         {
             _circleService = new CircleService();
@@ -25,7 +24,8 @@ namespace ShapeCalc.Test
 
             Assert.Equal(expectedArea, actualArea);
         }
-        
+
+
         [Fact]
         public async Task GetPerimeter_ValidCircle_ReturnsCorrectResult()
         {
@@ -36,6 +36,5 @@ namespace ShapeCalc.Test
 
             Assert.Equal(expectedArea, actualArea);
         }
-        
     }
 }

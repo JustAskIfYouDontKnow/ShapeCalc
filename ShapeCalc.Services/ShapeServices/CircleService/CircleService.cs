@@ -4,12 +4,11 @@ namespace ShapeCalc.Services.ShapeServices.CircleService;
 
 public class CircleService : ICircleService
 {
-    
+
     public Task<double> GetArea(Circle shape)
     {
         return Task.FromResult(Math.PI * shape.Radius * shape.Radius);
     }
-
 
     public Task<double> GetPerimeter(Circle circle)
     {
@@ -17,5 +16,9 @@ public class CircleService : ICircleService
 
         return Task.FromResult(perimeter);
     }
-
+    
+    public Task<bool> IsRightAngle(Circle shape)
+    {
+        return Task.FromResult(false);
+    }
 }

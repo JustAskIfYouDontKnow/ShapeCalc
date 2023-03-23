@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using ShapeCalc.Services;
 using ShapeCalc.Services.ShapeServices.CircleService;
 using ShapeCalc.Services.ShapeServices.SquareService;
 using ShapeCalc.Services.ShapeServices.TriangleService;
@@ -19,10 +20,8 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "ShapeCalc_Api", Version = "v1"}); });
-
-        services.AddScoped<ITriangleService, TriangleService>();
-        services.AddScoped<ICircleService, CircleService>();
-        services.AddScoped<ISquareService, SquareService>();
+        
+        services.AddScoped<IServiceContainer, ServiceContainer>();
 
         services.AddControllers();
     }

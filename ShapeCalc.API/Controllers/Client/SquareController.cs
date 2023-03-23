@@ -6,8 +6,10 @@ namespace ShapeCalc.API.Controllers.Client;
 
 public class SquareController : AbstractClientController
 {
-    
-    
+
+    public SquareController(IServiceContainer serviceContainer) : base(serviceContainer) { }
+
+
     [HttpPost]
     public async Task<ActionResult<double>> GetSquareArea([FromBody] Square square)
     {
@@ -16,8 +18,7 @@ public class SquareController : AbstractClientController
             return BadRequest(ModelState);
         }
 
-        var shapeService = ShapeServiceFactory.Create();
-        var area = await shapeService.GetArea(square);
+        var area = await ServiceContainer.SquareService.GetArea(square);
 
         if (area <= 0)
         {
@@ -36,8 +37,7 @@ public class SquareController : AbstractClientController
             return BadRequest(ModelState);
         }
 
-        var shapeService = ShapeServiceFactory.Create();
-        var perimeter = await shapeService.GetPerimeter(square);
+        var perimeter = await ServiceContainer.SquareService.GetPerimeter(square);
 
         if (perimeter <= 0)
         {
@@ -46,4 +46,5 @@ public class SquareController : AbstractClientController
 
         return Ok(perimeter);
     }
+
 }
